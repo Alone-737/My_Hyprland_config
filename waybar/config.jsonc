@@ -5,10 +5,10 @@
     "exclusive": true,
     "passthrough": false,
     "gtk-layer-shell": true,
-    "height": 50,
-    "modules-left": ["clock","hyprland/workspaces"],
+    "height": 40,
+    "modules-left": ["clock", "hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["network", "bluetooth", "temperature","custom/power_profile","battery","backlight","pulseaudio","pulseaudio#microphone","tray"],
+    "modules-right": ["network", "bluetooth", "temperature", "custom/power_profile", "battery", "backlight", "pulseaudio", "pulseaudio#microphone", "tray"],
 
     "hyprland/window": {
         "format": "{}"
@@ -18,57 +18,43 @@
         "disable-scroll": true,
         "all-outputs": true,
         "on-click": "activate",
-        "persistent_workspaces": {
-            "1": [], "2": [], "3": [], "4": [], "5": [], "6": [], "7": [], "8": [], "9": [], "10": []
-        }
+        "format": "{name}"
     },
     
-    "custom/power_profile":{
-        "exec": "asusctl profile -p | sed s:'Active profile is'::",
+    "custom/power_profile": {
+        "exec": "powerprofilesctl get",
         "interval": 30,
-        "format": "󰈐{}", 
-        "on-click": "asusctl profile -n; pkill -SIGRTMIN+8 waybar",
-        "signal": 8
+        "format": "󰈐 {}", 
+        "on-click": "powerprofilesctl set performance || powerprofilesctl set balanced",
+        "tooltip": true
     },
 
     "clock": {
-    "format": "{:%H:%M   %a, %b %e}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+        "format": "{:%H:%M}",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
 
     "backlight": {
-        "device": "intel_backlight",
+        "device": "amdgpu_bl1", 
         "format": "{icon} {percent}%",
         "format-icons": ["󰃞", "󰃟", "󰃠"],
         "on-scroll-up": "brightnessctl set 1%+",
-        "on-scroll-down": "brightnessctl set 1%-",
-        "min-length": 6
+        "on-scroll-down": "brightnessctl set 1%-"
     },
 
     "battery": {
-        "states": {"good": 95,"warning": 30,"critical": 20},
+        "states": {"good": 95, "warning": 30, "critical": 20},
         "format": "{icon} {capacity}%",
         "format-charging": " {capacity}%",
         "format-plugged": " {capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-icons": ["󰂎","󰁺","󰁻","󰁼","󰁽","󰁾","󰁿","󰂀","󰂁","󰂂","󰁹"]
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
     },
 
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "tooltip": false,
-        "format-muted": " Muted",
+        "format-muted": "󰝟 Muted",
         "on-click": "pamixer -t",
-        "on-scroll-up": "pamixer -i 5",
-        "on-scroll-down": "pamixer -d 5",
-        "scroll-step": 5,
         "format-icons": {
-            "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
             "default": ["", "", ""]
         }
     },
@@ -76,41 +62,26 @@
     "pulseaudio#microphone": {
         "format": "{format_source}",
         "format-source": " {volume}%",
-        "format-source-muted": " Muted",
-        "on-click": "pamixer --default-source -t",
-        "on-scroll-up": "pamixer --default-source -i 5",
-        "on-scroll-down": "pamixer --default-source -d 5",
-        "scroll-step": 5
+        "format-source-muted": "",
+        "on-click": "pamixer --default-source -t"
     },
     
     "temperature": {
-    "thermal-zone": 0,
-    "format": "{temperatureF}°F ",
-    "critical-threshold": 50,
-    "format-critical": "{temperatureC}°C "
+        "format": " {temperatureC}°C",
+        "critical-threshold": 80
     },
 
     "network": {
-        "format-wifi": "  {signalStrength}%",
-        "format-ethernet": "{ipaddr}/{cidr}",
-        "tooltip-format": "{essid} - {ifname} via {gwaddr}",
-        "format-linked": "{ifname} (No IP)",
-        "format-disconnected": "Disconnected ⚠",
-        "format-alt": "{ifname}:{essid} {ipaddr}/{cidr}",
-        "on-click": "nm-connection-editor"   // Opens Network Manager
+        "format-wifi": " {signalStrength}%",
+        "format-disconnected": "󰤮",
+        "on-click": "nm-connection-editor"
     },
 
     "bluetooth": {
-    "format": " {status}",
-    "format-disabled": " Off",
-    "format-connected": " {num_connections}",
-    "tooltip-format": "{device_alias}",
-    "tooltip-format-connected": " {device_enumerate}",
-    "tooltip-format-enumerate-connected": "{device_alias}",
-    "on-click": "blueman-manager",
-    "interval": 5
+        "format": "",
+        "format-connected": " {num_connections}",
+        "on-click": "blueman-manager"
     },
-
 
     "tray": {
         "icon-size": 18,
