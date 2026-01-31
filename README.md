@@ -1,72 +1,39 @@
-My Hyprland Config
+# My Hyprland Config
 
-Personal configuration for Hyprland, a dynamic tiling Wayland compositor optimized for productivity, aesthetics, and ease of use.
+Personal, clean, and productive **Hyprland** setup – a dynamic tiling Wayland compositor built for daily driving with great looks and zero bloat.
 
-This config includes everything from a terminal setup to a status bar, file manager enhancements, wallpapers, lock screen, and system utilities.
+Focus: Productivity + Aesthetics + Simplicity  
+(Arch Linux / Manjaro optimized – works great on AMD/Intel GPUs)
 
-Features
+![Hyprland Screenshot](https://github.com/Alone-737/My_Hyprland_config/raw/main/a137919a3a5a48f55afda26fdcca2b8b.png)  
+*(My current desktop – clean Waybar, Kitty, multi-monitor Hyprpaper wallpaper)*
 
-Hyprland – Modern, dynamic tiling Wayland compositor
+![Wallpaper Example](https://github.com/Alone-737/My_Hyprland_config/raw/main/cat_leaves.png)  
+*(One of the wallpapers included – feel free to swap!)*
 
-Kitty – Fast, GPU-accelerated terminal with custom fonts
+## Features
 
-Waybar – Highly configurable status bar
+- **Hyprland** → Smooth dynamic tiling with animations & blur  
+- **Kitty** → Fast GPU-accelerated terminal + ligatures  
+- **Waybar** → Modern, modular status bar (CPU, memory, network, etc.)  
+- **Thunar** → Lightweight file manager + archive plugins  
+- **GVFS & MTP** → Seamless USB/phone mounting  
+- **Hyprpaper** → Easy multi-monitor wallpaper switching  
+- **Hyprlock** → Sleek screen locker  
+- **Fastfetch** → Stylish system info in terminal  
+- **Controls** → Brightness (brightnessctl), Volume (pamixer)  
+- **Networking** → NetworkManager tray + Blueman Bluetooth  
+- **Fonts & Icons** → JetBrains Mono Nerd Font + Font Awesome  
 
-Thunar – Lightweight file manager with archive plugin support
+Everything pre-configured in `~/.config/` for immediate usability.
 
-GVFS & MTP – File system integration for removable devices
+## Quick Install (Arch )
 
-Hyprpaper – Wallpaper management for multiple monitors
+```bash
+# Core packages (required)
+sudo pacman -S hyprland kitty waybar thunar thunar-archive-plugin gvfs gvfs-mtp \
+    fastfetch hyprlock hyprpaper brightnessctl pamixer network-manager-applet blueman \
+    ttf-jetbrains-mono-nerd otf-font-awesome
 
-Hyprlock – Screen locking utility
-
-Fastfetch – Fetch system information in the terminal
-
-Brightness & Audio Control – via brightnessctl and pamixer
-
-Network & Bluetooth Tools – network-manager-applet and blueman
-
-Fonts – JetBrains Mono Nerd Font, Font Awesome icons
-
-Installation
-
-Install all required packages on Arch Linux / Manjaro with:
-
-sudo pacman -S hyprland kitty waybar thunar thunar-archive-plugin gvfs gvfs-mtp fastfetch hyprlock hyprpaper brightnessctl pamixer libpulse network-manager-applet blueman ttf-jetbrains-mono-nerd otf-font-awesome
-
-
-This command ensures you have all the essential tools for the configuration to work correctly.
-
-Usage
-
-Copy the configuration files to:
-
-~/.config/hypr/
-
-
-Start Hyprland from your login manager or from a TTY:
-
-hyprland
-
-
-Your environment should now be fully set up with custom themes, bar, and system tools.
-
-Optional Enhancements
-
-These are not required but can improve your experience:
-
-dmenu / wofi – App launcher
-
-neofetch – Display system information on terminal startup
-
-polkit / pam authentication – For GUI tools requiring root privileges
-
-Extra themes & wallpapers – To customize look and feel
-
-Notes
-
-Make sure your GPU drivers support Wayland.
-
-Fonts and icons are necessary for proper display of terminals, bar, and menus.
-
-Adjust the configuration files in ~/.config/hypr/ to your personal preference.
+# Strongly recommended extras (2026 best practices)
+sudo pacman -S xdg-desktop-portal-hyprland qt5-wayland qt6-wayland polkit-gnome hypridle wofi
