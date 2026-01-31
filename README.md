@@ -3,7 +3,7 @@
 Personal, clean, and productive **Hyprland** setup – a dynamic tiling Wayland compositor built for daily driving with great looks and zero bloat.
 
 Focus: Productivity + Aesthetics + Simplicity  
-(Arch Linux / Manjaro optimized – works great on AMD/Intel GPUs)
+(Arch Linux optimized – works great on AMD/Intel GPUs)
 
 ![Hyprland Screenshot](https://github.com/Alone-737/My_Hyprland_config/raw/main/a137919a3a5a48f55afda26fdcca2b8b.png)  
 *(My current desktop – clean Waybar, Kitty, multi-monitor Hyprpaper wallpaper)*
