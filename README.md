@@ -1,148 +1,246 @@
 # My Hyprland Config
 
+> A batteries-included Hyprland rice for Arch — zero bloat, maximum productivity.
+
 Personal, clean, and productive **Hyprland** setup – a dynamic tiling Wayland compositor built for daily driving with great looks and zero bloat.
 
-Focus: Productivity + Aesthetics + Simplicity  
-(Arch Linux optimized – works great on AMD/Intel GPUs)
+**Focus:** Productivity + Aesthetics + Simplicity  
+**Optimized for:** Arch Linux (works great on AMD/Intel GPUs)
 
 ![Hyprland Screenshot](https://github.com/Alone-737/My_Hyprland_config/raw/main/a137919a3a5a48f55afda26fdcca2b8b.png)  
-*(My current desktop – clean Waybar, Kitty, multi-monitor Hyprpaper wallpaper)*
+*My current desktop – clean Waybar, Kitty, multi-monitor Hyprpaper wallpaper*
 
 ![Wallpaper Example](https://github.com/Alone-737/My_Hyprland_config/raw/main/cat_leaves.png)  
-*(One of the wallpapers included – feel free to swap!)*
+*One of the wallpapers included – feel free to swap!*
 
-## Features
+---
+
+## ✨ Features
 
 - **Hyprland** → Smooth dynamic tiling with animations & blur  
-- **Kitty** → Fast GPU-accelerated terminal + ligatures  
-- **Waybar** → Modern, modular status bar (CPU, memory, network, etc.)  
-- **Thunar** → Lightweight file manager + archive plugins  
+- **Kitty** → Fast GPU-accelerated terminal with ligature support  
+- **Waybar** → Modern, modular status bar (CPU, memory, network, volume)  
+- **Thunar** → Lightweight file manager with archive plugin support  
 - **GVFS & MTP** → Seamless USB/phone mounting  
 - **Hyprpaper** → Easy multi-monitor wallpaper switching  
 - **Hyprlock** → Sleek screen locker  
-- **Fastfetch** → Stylish system info in terminal  
-- **Controls** → Brightness (brightnessctl), Volume (pamixer)  
+- **Hypridle** → Automatic screen locking on idle
+- **Wlogout** → Stylish logout menu  
+- **Wofi** → Fast app launcher  
+- **Fastfetch** → Stylish system info display  
+- **Hardware Controls** → Brightness (brightnessctl), Volume (pamixer)  
 - **Networking** → NetworkManager tray + Blueman Bluetooth  
 - **Fonts & Icons** → JetBrains Mono Nerd Font + Font Awesome  
 
 Everything pre-configured in `~/.config/` for immediate usability.
 
+---
 
-# ───────────────────────────────────────────────────────────────
-# Hyprland Keybinds Configuration
-# Main modifier key used for most shortcuts
-$mainMod = SUPER
+## 🚀 Quick Install (Arch Linux)
 
-# For more information about syntax and available dispatchers:
-# https://wiki.hyprland.org/Configuring/Keywords/
-# https://wiki.hyprland.org/Configuring/Binds/
-# https://wiki.hyprland.org/Configuring/Dispatchers/
-# ───────────────────────────────────────────────────────────────
-
-# Basic window & session management
-bind = $mainMod,         Q,         killactive,           # Close the active/focused window
-bind = $mainMod SHIFT,   Q,         exec, wlogout         # Show logout/power menu (alternative binding)
-bind = $mainMod,         M,         exec, wlogout --protocol layer-shell  # Show logout/power menu (layer-shell version)
-bind = $mainMod SHIFT,   M,         exit,                 # Completely exit Hyprland (log out of the session)
-bind = $mainMod,         L,         exec, pidof hyprlock || hyprlock  # Lock the screen (only starts if not already running)
-
-# Launchers & applications
-bind = CTRL+ALT,         T,         exec, kitty           # Open terminal
-bind = $mainMod,         E,         exec, thunar          # Open file manager
-bind = $mainMod,         SPACE,     exec, wofi            # Open application launcher (wofi)
-
-# Window layout & state toggles
-bind = $mainMod,         V,         togglefloating,       # Toggle floating mode for the focused window
-bind = $mainMod,         P,         pseudo,               # Toggle pseudo-tile (dwindle layout)
-bind = $mainMod,         J,         togglesplit,          # Toggle split direction (dwindle layout)
-bind = $mainMod,         F11,       fullscreen, 1         # Toggle fullscreen (keep borders/gaps)
-bind = CTRL SHIFT,       F,         fullscreen, 0         # Toggle true fullscreen (no borders/gaps)
-
-# Focus movement (vim-style arrow keys)
-bind = $mainMod, left,  movefocus, l
-bind = $mainMod, right, movefocus, r
-bind = $mainMod, up,    movefocus, u
-bind = $mainMod, down,  movefocus, d
-
-# Workspace switching (mainMod + number)
-bind = $mainMod, 1, workspace, 1
-bind = $mainMod, 2, workspace, 2
-bind = $mainMod, 3, workspace, 3
-bind = $mainMod, 4, workspace, 4
-bind = $mainMod, 5, workspace, 5
-bind = $mainMod, 6, workspace, 6
-bind = $mainMod, 7, workspace, 7
-bind = $mainMod, 8, workspace, 8
-bind = $mainMod, 9, workspace, 9
-bind = $mainMod, 0, workspace, 10
-
-# Move focused window to workspace (mainMod + SHIFT + number)
-bind = $mainMod SHIFT, 1, movetoworkspace, 1
-bind = $mainMod SHIFT, 2, movetoworkspace, 2
-bind = $mainMod SHIFT, 3, movetoworkspace, 3
-bind = $mainMod SHIFT, 4, movetoworkspace, 4
-bind = $mainMod SHIFT, 5, movetoworkspace, 5
-bind = $mainMod SHIFT, 6, movetoworkspace, 6
-bind = $mainMod SHIFT, 7, movetoworkspace, 7
-bind = $mainMod SHIFT, 8, movetoworkspace, 8
-bind = $mainMod SHIFT, 9, movetoworkspace, 9
-bind = $mainMod SHIFT, 0, movetoworkspace, 10
-
-# Mouse wheel workspace scrolling
-bind = $mainMod, mouse_down, workspace, e+1
-bind = $mainMod, mouse_up,   workspace, e-1
-
-# Mouse window dragging (hold mainMod + mouse button)
-bindm = $mainMod, mouse:272, movewindow     # Left mouse button   → move window
-bindm = $mainMod, mouse:273, resizewindow   # Right mouse button  → resize window
-
-# ───────────────────────────────────────────────────────────────
-# Screenshots (using slurp + grim)
-# ───────────────────────────────────────────────────────────────
-
-# Select area → save to ~/Pictures/Screenshots/
-bind = $mainMod,       S, exec, slurp -d | grim -g - ~/Pictures/Screenshots/shot-$(date +%F_%H-%M-%S).png
-bind = $mainMod SHIFT, S, exec, slurp -d | grim -g - ~/Pictures/Screenshots/shot-$(date +%F_%H-%M-%S).png
-
-# PrtSc (Print) key → same as above
-bind = , Print, exec, slurp -d | grim -g - ~/Pictures/Screenshots/shot-$(date +%F_%H-%M-%S).png
-
-# Shift + PrtSc → fullscreen screenshot
-bind = SHIFT, Print, exec, grim ~/Pictures/Screenshots/full-$(date +%F_%H-%M-%S).png
-
-# Ctrl + PrtSc → select area → copy to clipboard
-bind = CTRL, Print, exec, slurp -d | grim -g - - | wl-copy
-
-# ───────────────────────────────────────────────────────────────
-# Acer Nitro V 15-41 / ASUS specific hardware keys
-# (keycodes may vary — these are common for many 2024/2025 ASUS laptops)
-# ───────────────────────────────────────────────────────────────
-
-bind = ,211,  exec, asusctl profile -n; pkill -SIGRTMIN+8 waybar      # Fn + ?  → Cycle power/fan profile
-bind = ,121,  exec, pamixer -t                                        # Fn+F1   → Mute speakers
-bind = ,122,  exec, pamixer -d 5                                      # Vol-    → Volume down 5%
-bind = ,123,  exec, pamixer -i 5                                      # Vol+    → Volume up 5%
-bind = ,256,  exec, pamixer --default-source -t                       # Mic mute key
-bind = ,232,  exec, brightnessctl set 10%-                            # Fn+F7   → Brightness down
-bind = ,233,  exec, brightnessctl set 10%+                            # Fn+F8   → Brightness up
-bind = ,237,  exec, brightnessctl -d asus::kbd_backlight set 33%-     # Fn+F2   → Keyboard backlight down
-bind = ,238,  exec, brightnessctl -d asus::kbd_backlight set 33%+     # Fn+F3   → Keyboard backlight up
-
-# ───────────────────────────────────────────────────────────────
-# Extra / utility binds
-# ───────────────────────────────────────────────────────────────
-
-bind = $mainMod, B, exec, pkill -SIGUSR1 waybar   # Restart waybar (useful after config changes)
-
-
-
-## Quick Install (Arch )
-
+### 1. Install Required Packages
 ```bash
-# Core packages (required)
+# Core packages from official repos
 sudo pacman -S hyprland kitty waybar thunar thunar-archive-plugin gvfs gvfs-mtp \
-    fastfetch hyprlock hyprpaper brightnessctl pamixer network-manager-applet blueman \
-    ttf-jetbrains-mono-nerd otf-font-awesome
+    fastfetch hyprlock hyprpaper hypridle brightnessctl pamixer \
+    network-manager-applet blueman ttf-jetbrains-mono-nerd otf-font-awesome \
+    xdg-desktop-portal-hyprland qt5-wayland qt6-wayland polkit-gnome wofi
 
-# Strongly recommended extras (2026 best practices)
-sudo pacman -S xdg-desktop-portal-hyprland qt5-wayland qt6-wayland polkit-gnome hypridle wofi
+# AUR packages (requires yay or paru)
+yay -S wlogout
+
+# If you don't have yay installed:
+# sudo pacman -S --needed git base-devel
+# git clone https://aur.archlinux.org/yay.git
+# cd yay
+# makepkg -si
+```
+
+### 2. Clone This Repository
+```bash
+# Backup your existing configs first!
+mv ~/.config/hypr ~/.config/hypr.backup 2>/dev/null
+mv ~/.config/waybar ~/.config/waybar.backup 2>/dev/null
+mv ~/.config/kitty ~/.config/kitty.backup 2>/dev/null
+mv ~/.config/hypr ~/.config/hypr.backup 2>/dev/null
+
+# Clone the repo
+git clone https://github.com/Alone-737/My_Hyprland_config.git ~/hyprland-config
+
+# Copy configs to their proper locations
+cp -r ~/hyprland-config/hypr ~/.config/
+cp -r ~/hyprland-config/waybar ~/.config/
+cp -r ~/hyprland-config/kitty ~/.config/
+cp -r ~/hyprland-config/wofi ~/.config/
+cp -r ~/hyprland-config/wlogout ~/.config/
+# Add other config directories as needed
+```
+
+### 3. Launch Hyprland
+```bash
+# From TTY
+Hyprland
+
+# Or add to your display manager
+```
+
+---
+
+## ⌨️ Keybinding Cheat Sheet
+
+**Note:** `$mainMod` = `SUPER` (Windows key)
+
+### Window & Apps
+
+| Action              | Keybind                |
+|---------------------|------------------------|
+| Close window        | `Super + Q`            |
+| Lock screen         | `Super + L`            |
+| Launch apps (wofi)  | `Super + Space`        |
+| Open file browser   | `Super + E`            |
+| Open terminal       | `Ctrl + Alt + T`       |
+
+### Power & Logout
+
+| Action              | Keybind                |
+|---------------------|------------------------|
+| Logout menu (wlogout) | `Super + M`          |
+| Exit Hyprland       | `Super + Shift + M`    |
+| Alt logout menu     | `Super + Shift + Q`    |
+
+### Workspace Management
+
+| Action                    | Keybind                |
+|---------------------------|------------------------|
+| Switch to workspace 1-9   | `Super + [1-9]`        |
+| Move window to workspace  | `Super + Shift + [1-9]`|
+| Cycle workspaces          | `Super + Scroll`       |
+
+### Window Layouts
+
+| Action              | Keybind                |
+|---------------------|------------------------|
+| Toggle floating     | `Super + V`            |
+| Dwindle layouts     | `Super + P / J`        |
+| Fullscreen toggle   | `Super + F11` or `Ctrl + Shift + F` |
+
+### Screenshots
+
+| Action              | Keybind                |
+|---------------------|------------------------|
+| Area screenshot     | `Super + S` or `Super + Shift + S` |
+| Fullscreen shot     | `Print` or `Shift + Print` |
+| Copy to clipboard   | `Ctrl + Print`         |
+
+### Hardware / Function Keys
+
+Brightness, volume, mic mute, keyboard backlight controls are mapped to standard Fn keys (tested on Acer Nitro V15).
+
+### Waybar
+
+| Action              | Keybind                |
+|---------------------|------------------------|
+| Refresh Waybar      | `Super + B`            |
+
+**Full reference:** See [Hyprland Keybinds Documentation](https://wiki.hyprland.org/Configuring/Binds/)
+
+---
+
+## 🛠️ Troubleshooting
+
+### Waybar not showing?
+Check if config exists:
+```bash
+ls ~/.config/waybar/config
+```
+Restart Waybar: `Super + B`
+
+### Wlogout not working?
+Make sure it's installed from AUR:
+```bash
+yay -S wlogout
+```
+
+### Screen tearing?
+Enable VRR in `~/.config/hypr/hyprland.conf`:
+```conf
+misc {
+    vrr = 1
+}
+```
+
+### Multi-monitor issues?
+See the [Hyprland Multi-Monitor Guide](https://wiki.hyprland.org/Configuring/Monitors/)
+
+### Fonts look broken?
+Make sure Nerd Fonts are installed:
+```bash
+fc-list | grep -i jetbrains
+```
+
+### Screenshots not working?
+Install grim and slurp:
+```bash
+sudo pacman -S grim slurp
+```
+
+---
+
+## 📦 Complete Package List
+
+### Official Repos (pacman)
+- hyprland
+- kitty
+- waybar
+- thunar + thunar-archive-plugin
+- gvfs + gvfs-mtp
+- hyprlock + hyprpaper + hypridle
+- brightnessctl + pamixer
+- network-manager-applet + blueman
+- ttf-jetbrains-mono-nerd + otf-font-awesome
+- xdg-desktop-portal-hyprland
+- qt5-wayland + qt6-wayland
+- polkit-gnome
+- wofi
+- fastfetch
+- grim + slurp (for screenshots)
+
+### AUR (yay/paru)
+- wlogout
+
+---
+
+## 📝 Customization
+
+- **Wallpapers:** Stored in `~/Pictures/Wallpapers/` (change path in `hyprpaper.conf`)
+- **Waybar:** Edit `~/.config/waybar/config` and `style.css`
+- **Keybinds:** Modify `~/.config/hypr/hyprland.conf`
+- **Terminal theme:** Check `~/.config/kitty/kitty.conf`
+- **Logout menu:** Customize `~/.config/wlogout/layout` and `style.css`
+- **App launcher:** Edit `~/.config/wofi/style.css`
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License – feel free to fork, modify, and share!
+
+---
+
+## 🙏 Credits
+
+- [Hyprland](https://hyprland.org/) by vaxry
+- Inspired by the r/unixporn community
+- Wallpapers sourced from [specify your source]
+
+---
+
+## ⭐ Support
+
+If this config saved you hours of tinkering, consider dropping a star! It helps others discover this setup.
+
+**Issues?** Open a ticket on [GitHub Issues](https://github.com/Alone-737/My_Hyprland_config/issues)
+
+---
+
+**Enjoy your new Hyprland setup! 🚀**
