@@ -27,16 +27,6 @@ Focus: Productivity + Aesthetics + Simplicity
 
 Everything pre-configured in `~/.config/` for immediate usability.
 
-## Quick Install (Arch )
-
-```bash
-# Core packages (required)
-sudo pacman -S hyprland kitty waybar thunar thunar-archive-plugin gvfs gvfs-mtp \
-    fastfetch hyprlock hyprpaper brightnessctl pamixer network-manager-applet blueman \
-    ttf-jetbrains-mono-nerd otf-font-awesome
-
-# Strongly recommended extras (2026 best practices)
-sudo pacman -S xdg-desktop-portal-hyprland qt5-wayland qt6-wayland polkit-gnome hypridle wofi
 
 # ───────────────────────────────────────────────────────────────
 # Hyprland Keybinds Configuration
@@ -143,3 +133,16 @@ bind = ,238,  exec, brightnessctl -d asus::kbd_backlight set 33%+     # Fn+F3   
 # ───────────────────────────────────────────────────────────────
 
 bind = $mainMod, B, exec, pkill -SIGUSR1 waybar   # Restart waybar (useful after config changes)
+
+
+
+## Quick Install (Arch )
+
+```bash
+# Core packages (required)
+sudo pacman -S hyprland kitty waybar thunar thunar-archive-plugin gvfs gvfs-mtp \
+    fastfetch hyprlock hyprpaper brightnessctl pamixer network-manager-applet blueman \
+    ttf-jetbrains-mono-nerd otf-font-awesome
+
+# Strongly recommended extras (2026 best practices)
+sudo pacman -S xdg-desktop-portal-hyprland qt5-wayland qt6-wayland polkit-gnome hypridle wofi
