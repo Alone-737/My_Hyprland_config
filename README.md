@@ -223,15 +223,7 @@ sudo pacman -S grim slurp
 
 ## 📄 License
 
-This project is licensed under the MIT License – feel free to fork, modify, and share!
-
----
-
-## 🙏 Credits
-
-- [Hyprland](https://hyprland.org/) by vaxry
-- Inspired by the r/unixporn community
-- Wallpapers sourced from [specify your source]
+feel free to fork, modify, and share!
 
 ---
 
