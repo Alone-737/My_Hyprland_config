@@ -47,7 +47,7 @@ sudo pacman -S hyprland kitty waybar thunar thunar-archive-plugin gvfs gvfs-mtp 
     xdg-desktop-portal-hyprland qt5-wayland qt6-wayland polkit-gnome wofi
 
 # AUR packages (requires yay or paru)
-yay -S wlogout
+yay -S wlogout nbfc-linux auto-cpufreq
 
 # If you don't have yay installed:
 # sudo pacman -S --needed git base-devel
