@@ -1,3 +1,6 @@
+* {
+    font-family: "Torus Pro", sans-serif;
+}
 window {
     margin: 0px;
     border: 5px solid #1e1e2e;
@@ -74,3 +77,4 @@ window {
     border-radius: 15px;
     background-color: #89b4fa;
 }
+
