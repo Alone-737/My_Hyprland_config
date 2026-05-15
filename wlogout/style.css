@@ -30,57 +30,57 @@ button:focus {
 
 
 #lock {
-    background-image: url("/home/alone/.config/wlogout/assets/lock.png");
+    background-image: url("~/.config/wlogout/assets/lock.png");
 }
 
 #lock:hover {
-    background-image: url("/home/alone/.config/wlogout/assets/lock-hover.png");
+    background-image: url("~/.config/wlogout/assets/lock-hover.png");
     color: #11111b;
 }
 
 #logout {
-    background-image: url("/home/alone/.config/wlogout/assets/logout.png");
+    background-image: url("~/.config/wlogout/assets/logout.png");
 }
 
 #logout:hover {
-    background-image: url("/home/alone/.config/wlogout/assets/logout-hover.png");
+    background-image: url("~/.config/wlogout/assets/logout-hover.png");
     color: #11111b;
 }
 
 #suspend {
-    background-image: url("/home/alone/.config/wlogout/assets/sleep.png");
+    background-image: url("~/.config/wlogout/assets/sleep.png");
 }
 
 #suspend:hover {
-    background-image: url("/home/alone/.config/wlogout/assets/sleep-hover.png");
+    background-image: url("~/.config/wlogout/assets/sleep-hover.png");
     color: #11111b;
 }
 
 #shutdown {
-    background-image: url("/home/alone/.config/wlogout/assets/power.png");
+    background-image: url("~/.config/wlogout/assets/power.png");
 }
 
 #shutdown:hover {
-    background-image: url("/home/alone/.config/wlogout/assets/power-hover.png"); 
+    background-image: url("~/.config/wlogout/assets/power-hover.png"); 
     color: #11111b;
 }
 
 #reboot {
-    background-image: url("/home/alone/.config/wlogout/assets/restart.png");
+    background-image: url("~/.config/wlogout/assets/restart.png");
 }
 
 #reboot:hover {
-    background-image: url("/home/alone/.config/wlogout/assets/restart-hover.png");
+    background-image: url("~/.config/wlogout/assets/restart-hover.png");
     color: #11111b;
 }
 
 #exit {
-    background-image: url("/home/alone/.config/wlogout/assets/restart.png");
+    background-image: url("~/.config/wlogout/assets/restart.png");
     background-color: #11111b;
 }
 
 #exit:hover {
-    background-image: url("/home/alone/.config/wlogout/assets/restart-hover.png");
+    background-image: url("~/.config/wlogout/assets/restart-hover.png");
     color: #11111b;
     background-color: #cdd6f4;
 }
