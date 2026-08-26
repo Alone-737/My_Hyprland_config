@@ -80,6 +80,7 @@ brightnessctl
 tlp
 ryzenadj
 asusctl
+mpvpaper
 ```
 
 Some parts are hardware-specific:
